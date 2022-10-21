@@ -138,13 +138,13 @@ export default function Home() {
         </div>
 
         <hr className="featurette-divider" />
-        <AnimationOnScroll animateIn="animate__fadeRight">
-          <div
-            className="row featurette"
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
+        <AnimationOnScroll
+          animateIn="animate__fadeRight"
+          delay="300"
+          offset="300"
+          easing="easeInSine"
+        >
+          <div className="row featurette">
             <div className="col-md-7">
               <h1 className="featurette-heading">
                 Escola de
