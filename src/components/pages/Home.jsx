@@ -62,7 +62,7 @@ export default function Home() {
 
             <div className="text-end">
               <button type="button" className="btn btn-outline-light me-2">
-                <a href="Login.html">Login</a>
+                <a href="/login">Login</a>
               </button>
               <button type="button" className="btn btn-outline-light">
                 <a href="inscricao.html">Matrícula</a>
