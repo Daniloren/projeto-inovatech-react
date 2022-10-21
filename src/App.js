@@ -15,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/redefinirSenha" element={<Home />} />
+        {/* <Route path="/curso/:id" element={<Home />} /> */}
       </Routes>
     </BrowserRouter>
   );

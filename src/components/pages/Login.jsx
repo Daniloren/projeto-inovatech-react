@@ -41,6 +41,7 @@ export default function Login() {
     <div className="div-login">
       <Alert
         color="danger"
+        fade="true"
         isOpen={visible}
         toggle={onDismiss}
         className="alert-fixed"
