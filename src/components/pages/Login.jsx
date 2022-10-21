@@ -1,4 +1,5 @@
 import React from "react";
+import { Alert, Button } from "reactstrap";
 
 import logo from "../../image/LogoNovo.png";
 //import "../../style/login.css";
@@ -6,6 +7,9 @@ import logo from "../../image/LogoNovo.png";
 export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [visible, setVisible] = React.useState(false);
+
+  const onDismiss = () => setVisible(false);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -18,9 +22,13 @@ export default function Login() {
       body: JSON.stringify({ email, password }),
     })
       .then((response) => {
-        if (response.ok)
-          //window.location="index.html";
+        if (response.ok) {
           console.log("Sucesso", response);
+          window.location = "/";
+        } else {
+          console.log("nok", response);
+          setVisible(true);
+        }
 
         return response;
       })
@@ -31,13 +39,23 @@ export default function Login() {
 
   return (
     <div className="div-login">
-      <main className="form-signin w-100 m-auto">
+      <Alert
+        color="danger"
+        isOpen={visible}
+        toggle={onDismiss}
+        className="alert-fixed"
+      >
+        Usuário ou senha inválidos
+      </Alert>
+      <main className="form-signin w-100 m-auto text-center">
         <form onSubmit={handleFormSubmit}>
-          <img
-            className="mb-4"
-            src={logo}
-            alt="imagem do logo da escola inova tecnologia"
-          />
+          <a href="/">
+            <img
+              className="mb-4"
+              src={logo}
+              alt="imagem do logo da escola inova tecnologia"
+            />
+          </a>
           <h1 className="h3 mb-3 fw-normal">Login</h1>
 
           <div className="form-floating">
@@ -69,6 +87,11 @@ export default function Login() {
             <label>
               <input type="checkbox" value="remember-me" /> Lembre me
             </label>
+          </div>
+          <div className="text-center mb-3">
+            <a href="/redefinirSenha" style={{ color: "#00ffff" }}>
+              Esqueci minha senha
+            </a>
           </div>
 
           <button className="w-100 btn btn-lg btn-primary" type="submit">
