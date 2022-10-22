@@ -1,10 +1,23 @@
 import React from "react";
 import logo from "../../image/LogoNovo.png";
+import perfil from "../../image/perfil.png";
 import Carrousel from "./Carrousel";
 import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { AnimationOnScroll } from "react-animation-on-scroll";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const location = useLocation();
+  const [user, setUser] = React.useState(location.state);
+  console.log(location);
+
+  const [userLogged, setUserLogged] = React.useState(user ? true : false);
+
+  const logoff = () => {
+    setUserLogged(false);
+    setUser(null);
+  };
+
   return (
     <div>
       <div>ícone</div>
@@ -60,13 +73,21 @@ export default function Home() {
               />
             </form>
 
-            <div className="text-end">
+            <div className={userLogged ? "hidden" : "text-end"}>
               <button type="button" className="btn btn-outline-light me-2">
-                <a href="Login.html">Login</a>
+                <a href="/login">Login</a>
               </button>
               <button type="button" className="btn btn-outline-light">
                 <a href="inscricao.html">Matrícula</a>
               </button>
+            </div>
+            <div className={userLogged ? "text-end" : "hidden"}>
+              <a href="">
+                <img src={perfil} className="perfil m-3" />
+              </a>
+              <a href="#" onClick={() => logoff()}>
+                desconectar
+              </a>
             </div>
           </div>
         </div>

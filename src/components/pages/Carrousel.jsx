@@ -12,6 +12,8 @@ const items = [
     src: "https://besthqwallpapers.com/Uploads/17-2-2020/121822/thumb2-python-glitter-logo-programming-language-grid-metal-background-python-creative.jpg",
     altText: "Python é uma linguagem de programação",
     caption: "Python é uma linguagem de programação",
+    align: "center",
+    link: "/curso/python",
   },
   {
     src: "https://besthqwallpapers.com/Uploads/20-2-2020/122463/thumb2-html5-glitter-logo-programming-language-grid-metal-background-html5-creative.jpg",
@@ -19,11 +21,15 @@ const items = [
       "HTML é uma linguagem de marcação utilizada na construção de páginas na Web",
     caption:
       "HTML é uma linguagem de marcação utilizada na construção de páginas na Web",
+    align: "left",
+    link: "/curso/html",
   },
   {
     src: "https://besthqwallpapers.com/Uploads/21-2-2020/122701/thumb2-c-plus-plus-glitter-logo-programming-language-grid-metal-background-c-plus-plus-creative.jpg",
     altText: " C# é uma linguagem de programação, multiparadigma",
     caption: " C# é uma linguagem de programação, multiparadigma",
+    align: "right",
+    link: "/curso/c-sharp",
   },
 ];
 
@@ -81,7 +87,8 @@ class Carrousel extends Component {
         >
           <img src={item.src} alt={item.altText} />
           <CarouselCaption
-            captionText={item.caption}
+            className={"text-" + item.align}
+            // captionText={item.caption}
             captionHeader={item.caption}
           />
         </CarouselItem>
