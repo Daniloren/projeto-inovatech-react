@@ -1,4 +1,5 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Alert, Button } from "reactstrap";
 
 import logo from "../../image/LogoNovo.png";
@@ -10,6 +11,18 @@ export default function Login() {
   const [visible, setVisible] = React.useState(false);
 
   const onDismiss = () => setVisible(false);
+  const navigate = useNavigate();
+
+  const loggedUser = (user) => {
+    navigate("/", {
+      state: {
+        id: user.id,
+        img: "",
+        name: user.name,
+        email: user.email,
+      },
+    });
+  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -23,8 +36,8 @@ export default function Login() {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Sucesso", response);
-          window.location = "/";
+          console.log("Sucesso", JSON.stringify(response.body), response);
+          loggedUser(JSON.stringify(response.body));
         } else {
           console.log("nok", response);
           setVisible(true);

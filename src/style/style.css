@@ -14,6 +14,15 @@ body {
   background-color: #141414;
 }
 
+.hidden{
+  display:none;
+}
+
+.perfil {
+  max-height: 70px;
+  border-radius: 50%;
+}
+
 .alert-fixed {
   position:fixed; 
   top: 0px; 
