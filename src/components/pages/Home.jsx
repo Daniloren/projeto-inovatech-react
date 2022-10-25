@@ -20,7 +20,6 @@ export default function Home() {
 
   return (
     <div>
-      <div>ícone</div>
       <header className="p-2 text-bg-dark">
         <div className="container-flex">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
