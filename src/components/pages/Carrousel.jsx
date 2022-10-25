@@ -88,7 +88,7 @@ class Carrousel extends Component {
           <img src={item.src} alt={item.altText} />
           <CarouselCaption
             className={"text-" + item.align}
-            // captionText={item.caption}
+            captionText={""}
             captionHeader={item.caption}
           />
         </CarouselItem>

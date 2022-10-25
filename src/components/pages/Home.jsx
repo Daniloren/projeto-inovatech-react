@@ -25,7 +25,7 @@ export default function Home() {
         <div className="container-flex">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a
-              href="index.html"
+              href="/"
               className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
             >
               <img
@@ -78,7 +78,7 @@ export default function Home() {
                 <a href="/login">Login</a>
               </button>
               <button type="button" className="btn btn-outline-light">
-                <a href="inscricao.html">Matrícula</a>
+                <a href="inscricao">Matrícula</a>
               </button>
             </div>
             <div className={userLogged ? "text-end" : "hidden"}>
