@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 export default function AppHeader() {
   const location = useLocation();
   const [user, setUser] = React.useState(location.state);
-  console.log(location);
+  
 
   const [userLogged, setUserLogged] = React.useState(user ? true : false);
 
@@ -59,7 +59,7 @@ export default function AppHeader() {
             />
           </form>
 
-          <div className="text-end">
+          <div className={userLogged ? "hidden" : "text-end"}>
             <button type="button" className="btn btn-outline-light me-2">
               <Link to="/login">Login</Link>
             </button>
