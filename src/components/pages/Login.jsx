@@ -1,6 +1,6 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Alert, Button } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import { Alert } from "reactstrap";
 
 import logo from "../../image/LogoNovo.png";
 //import "../../style/login.css";
@@ -54,7 +54,7 @@ export default function Login() {
     <div className="div-login">
       <Alert
         color="danger"
-        fade="true"
+        fade={true}
         isOpen={visible}
         toggle={onDismiss}
         className="alert-fixed"
