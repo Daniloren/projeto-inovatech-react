@@ -1,0 +1,54 @@
+/*
+Global Style
+*/
+
+body {
+  /*background-color: #202124;*/
+  background-color: #141414;
+  color: white;
+}
+
+/*
+ Navbar
+*/
+
+
+
+
+
+/*
+  Seção Descrição do Curso
+*/
+
+main h1 {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.item {
+  font-size: 1.75em;
+  color:#00ffff;
+}
+
+@media (min-width: 992px) {
+  .rounded-lg-3 { border-radius: .3rem; }
+}
+
+.centralizar{
+  justify-content: center;
+}
+
+/*
+  Footer
+*/
+
+a{
+  color: #00ffff;
+  text-decoration: none;
+}
+footer {
+  padding-right: 1em;
+  color: #00ffff;
+  background-color: RGBA(33,37,41,var(--bs-bg-opacity,1))!important;
+  margin-top: 1.5em;
+  }
