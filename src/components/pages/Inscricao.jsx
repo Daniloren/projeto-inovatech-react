@@ -1,11 +1,13 @@
 import React from "react";
-import logo from "../../image/LogoNovo.png";
-import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+//import logo from "../../image/LogoNovo.png";
+//import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { Alert } from "reactstrap";
+import AppHeader from "../organisms/AppHeader";
+import AppFooter from "../organisms/AppFooter";
 
 export default function Inscricao() {
-  //Atributos do cadastro do usuario
+  //Atributos do cadastro do usuário
   const [nome, setNome] = React.useState("");
   const [sobrenome, setSobrenome] = React.useState("");
   const [endereco, setEndereco] = React.useState("");
@@ -113,69 +115,7 @@ export default function Inscricao() {
       >
         Ops. Algo deu errado. Tente novamente em alguns instantes
       </Alert>
-      <header className="p-2 text-bg-dark">
-        <div className="container-flex">
-          <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <Link
-              to="/home"
-              className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-            >
-              <img
-                className="bi me-2"
-                width="100"
-                height="100"
-                src={logo}
-                alt="Logo Inova Tech esverdeado"
-              />
-            </Link>
-
-            <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li>
-                <Link to="#" className="nav-link px-2 text-white">
-                  Inicio
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="nav-link px-2 text-white">
-                  Cursos
-                </Link>
-              </li>
-
-              <li>
-                <Link to="#" className="nav-link px-2 text-white">
-                  Contato
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="nav-link px-2 text-white">
-                  Sobre
-                </Link>
-              </li>
-            </ul>
-
-            <form
-              className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
-              role="search"
-            >
-              <input
-                type="search"
-                className="form-control form-control-dark text-bg-dark"
-                placeholder="Buscar..."
-                aria-label="Search"
-              />
-            </form>
-
-            <div className="text-end">
-              <button type="button" className="btn btn-outline-light me-2">
-                <Link to="/login">Login</Link>
-              </button>
-              <button type="button" className="btn btn-outline-light">
-                <Link to="/inscricao">Matrícula</Link>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <AppHeader />
       <form onSubmit={handleFormSubmit} className="form">
         <fieldset>
           <div className="campo">
@@ -392,37 +332,7 @@ export default function Inscricao() {
       </form>
       <br />
 
-      <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-        <div className="col-md-4 d-flex align-items-center">
-          <Link
-            to="/home"
-            className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-          >
-            <img className="bi" src={logo} width="100" height="100" alt="" />
-          </Link>
-          <span className="mb-3 mb-md-0 text-muted">
-            &copy; 2022 Company, Inc
-          </span>
-        </div>
-
-        <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-          <li className="ms-3 mb-2">
-            <span style={{ fontSize: 1.5 + "em" }}>
-              <FaWhatsapp />
-            </span>
-          </li>
-          <li className="ms-3">
-            <span style={{ fontSize: 1.5 + "em" }}>
-              <FaFacebookF />
-            </span>
-          </li>
-          <li className="ms-3">
-            <span style={{ fontSize: 1.5 + "em" }}>
-              <FaInstagram />
-            </span>
-          </li>
-        </ul>
-      </footer>
+      <AppFooter />
     </div>
   );
 }

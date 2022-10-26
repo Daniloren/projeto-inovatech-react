@@ -1,96 +1,19 @@
 import React from "react";
-import logo from "../../image/LogoNovo.png";
-import perfil from "../../image/perfil.png";
+//import perfil from "../../image/perfil.png";
+//import logo from '../../image/LogoNovo.png'
+//import { Link } from 'react-router-dom'
 import Carrousel from "./Carrousel";
-import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { AnimationOnScroll } from "react-animation-on-scroll";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import AppFooter from "../organisms/AppFooter";
+import AppHeader from "../organisms/AppHeader";
+{/* eslint jsx-a11y/anchor-is-valid : 0 */}
 
 export default function Home() {
-  const location = useLocation();
-  const [user, setUser] = React.useState(location.state);
-  console.log(location);
-
-  const [userLogged, setUserLogged] = React.useState(user ? true : false);
-
-  const logoff = () => {
-    setUserLogged(false);
-    setUser(null);
-  };
+  
 
   return (
     <div>
-      <header className="p-2 text-bg-dark">
-        <div className="container-flex">
-          <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a
-              href="/"
-              className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-            >
-              <img
-                className="bi me-2"
-                width="100"
-                height="100"
-                src={logo}
-                alt="Logo Inova Tech esverdeado"
-              />
-            </a>
-
-            <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li>
-                <a href="#" className="nav-link px-2 text-white">
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link px-2 text-white">
-                  Cursos
-                </a>
-              </li>
-
-              <li>
-                <a href="#" className="nav-link px-2 text-white">
-                  Contato
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link px-2 text-white">
-                  Sobre
-                </a>
-              </li>
-            </ul>
-
-            <form
-              className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
-              role="search"
-            >
-              <input
-                type="search"
-                className="form-control form-control-dark text-bg-dark"
-                placeholder="Buscar..."
-                aria-label="Search"
-              />
-            </form>
-
-            <div className={userLogged ? "hidden" : "text-end"}>
-              <button type="button" className="btn btn-outline-light me-2">
-                <a href="/login">Login</a>
-              </button>
-              <button type="button" className="btn btn-outline-light">
-                <a href="inscricao">Matrícula</a>
-              </button>
-            </div>
-            <div className={userLogged ? "text-end" : "hidden"}>
-              <a href="">
-                <img src={perfil} className="perfil m-3" />
-              </a>
-              <a href="#" onClick={() => logoff()}>
-                desconectar
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <AppHeader />
       <Carrousel />
       <div className="container marketing">
         <div className="row">
@@ -99,7 +22,7 @@ export default function Home() {
               className="gitHub-img rounded-circle"
               src="https://t2.tudocdn.net/510706?w=140&h=140"
               alt="um gatinho  em preto e branco, logo representado pelo programa GitHub"
-              role="img"
+              
               aria-label="Placeholder: 140x140"
               preserveAspectRatio="xMidYMid slice"
               focusable="false"
@@ -142,7 +65,7 @@ export default function Home() {
             <img
               className="carreira-img rounded-circle"
               src="https://static3.depositphotos.com/1006077/199/i/600/depositphotos_1998679-stock-photo-dive-with-a-lot-of.jpg"
-              alt="um homem com mascara de mergulho, em um lindo amar com aguas crsitalinas"
+              alt="um homem com mascara de mergulho, em um lindo amar com águas cristalinas"
             />
             <h2 className="carreira">Mergulhe em sua Carreira</h2>
             <p className="carreiraText">
@@ -183,6 +106,7 @@ export default function Home() {
               <img
                 className="img-featurette"
                 src="https://www.istoedinheiro.com.br/wp-content/uploads/sites/17/2019/10/imagemn-escolhida-artigo-e1571255765939-1280x720.jpg"
+                alt=""
               />
             </div>
           </div>
@@ -247,37 +171,7 @@ export default function Home() {
       </div>
       <div className="container-flex">
         <hr></hr>
-        <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-          <div className="col-md-4 d-flex align-items-center">
-            <a
-              href="index.html"
-              className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-            >
-              <img className="bi" src={logo} width="100" height="100" alt="" />
-            </a>
-            <span className="mb-3 mb-md-0 text-muted">
-              &copy; 2022 Company, Inc
-            </span>
-          </div>
-
-          <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li className="ms-3 mb-2">
-              <span style={{ fontSize: 1.5 + "em" }}>
-                <FaWhatsapp />
-              </span>
-            </li>
-            <li className="ms-3">
-              <span style={{ fontSize: 1.5 + "em" }}>
-                <FaFacebookF />
-              </span>
-            </li>
-            <li className="ms-3">
-              <span style={{ fontSize: 1.5 + "em" }}>
-                <FaInstagram />
-              </span>
-            </li>
-          </ul>
-        </footer>
+      < AppFooter />
       </div>
     </div>
   );

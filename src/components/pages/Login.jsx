@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "reactstrap";
 
 import logo from "../../image/LogoNovo.png";
@@ -63,13 +63,13 @@ export default function Login() {
       </Alert>
       <main className="form-signin w-100 m-auto text-center">
         <form onSubmit={handleFormSubmit}>
-          <a href="/">
+          <Link to="/">
             <img
               className="mb-4"
               src={logo}
               alt="imagem do logo da escola inova tecnologia"
             />
-          </a>
+          </Link>
           <h1 className="h3 mb-3 fw-normal">Login</h1>
 
           <div className="form-floating">
