@@ -6,11 +6,11 @@ import Carrousel from "./Carrousel";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import AppFooter from "../organisms/AppFooter";
 import AppHeader from "../organisms/AppHeader";
-{/* eslint jsx-a11y/anchor-is-valid : 0 */}
+{
+  /* eslint jsx-a11y/anchor-is-valid : 0 */
+}
 
 export default function Home() {
-  
-
   return (
     <div>
       <AppHeader />
@@ -22,7 +22,6 @@ export default function Home() {
               className="gitHub-img rounded-circle"
               src="https://t2.tudocdn.net/510706?w=140&h=140"
               alt="um gatinho  em preto e branco, logo representado pelo programa GitHub"
-              
               aria-label="Placeholder: 140x140"
               preserveAspectRatio="xMidYMid slice"
               focusable="false"
@@ -171,7 +170,7 @@ export default function Home() {
       </div>
       <div className="container-flex">
         <hr></hr>
-      < AppFooter />
+        <AppFooter />
       </div>
     </div>
   );
