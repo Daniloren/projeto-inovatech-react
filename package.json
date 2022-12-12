@@ -2,7 +2,7 @@
   "name": "project",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3200/",
+  "proxy": "https://2uhw4x03se.execute-api.us-east-1.amazonaws.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",

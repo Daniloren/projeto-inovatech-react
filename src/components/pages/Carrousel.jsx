@@ -7,7 +7,7 @@ import {
   CarouselCaption,
 } from "reactstrap";
 
-const items = [
+var items = [
   {
     src: "https://besthqwallpapers.com/Uploads/17-2-2020/121822/thumb2-python-glitter-logo-programming-language-grid-metal-background-python-creative.jpg",
     altText: "Python é uma linguagem de programação",
@@ -36,7 +36,7 @@ const items = [
 class Carrousel extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0 };
+    this.state = { activeIndex: 0, items: [] };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.goToIndex = this.goToIndex.bind(this);
@@ -51,11 +51,18 @@ class Carrousel extends Component {
   onExited() {
     this.animating = false;
   }
+  componentDidMount() {
+    this.setState({ items: items });
+
+    // await fetch("/ads")
+    //   .then((response) => { response.json(); })
+    //   .then((ads) => { this.setState({ items: ads }); })
+  }
 
   next() {
     if (this.animating) return;
     const nextIndex =
-      this.state.activeIndex === items.length - 1
+      this.state.activeIndex === this.state.items.length - 1
         ? 0
         : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
@@ -65,7 +72,7 @@ class Carrousel extends Component {
     if (this.animating) return;
     const nextIndex =
       this.state.activeIndex === 0
-        ? items.length - 1
+        ? this.state.items.length - 1
         : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
@@ -76,7 +83,9 @@ class Carrousel extends Component {
   }
 
   render() {
-    const { activeIndex } = this.state;
+    const { activeIndex, items } = this.state;
+
+    console.log(items);
 
     const slides = items.map((item) => {
       return (
@@ -102,7 +111,7 @@ class Carrousel extends Component {
         previous={this.previous}
       >
         <CarouselIndicators
-          items={items}
+          items={this.state.items}
           activeIndex={activeIndex}
           onClickHandler={this.goToIndex}
         />
