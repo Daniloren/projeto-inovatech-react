@@ -16,7 +16,7 @@ export default function Login() {
   const loggedUser = (user) => {
     navigate("/", {
       state: {
-        id: user.id,
+        id: user.userId,
         img: "",
         name: user.name,
         email: user.email,
