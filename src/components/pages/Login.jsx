@@ -13,6 +13,7 @@ export default function Login() {
   const onDismiss = () => setVisible(false);
   const navigate = useNavigate();
 
+  //Adiciona o usuário logado ao State do React
   const loggedUser = (user) => {
     navigate("/", {
       state: {
@@ -24,9 +25,15 @@ export default function Login() {
     });
   };
 
+  //faz o processo de login
   const handleFormSubmit = (event) => {
+    //interrompe o submit padrão do html
     event.preventDefault();
-    fetch("/login", {
+
+    //Faz chamada na API no endpoint de login para verificar se o usuário existe no BD
+    //usa o process.env (ponto env) para gerenciar o link da api (desenvolvimento ou produção)
+    fetch(process.env.REACT_APP_API_URL + "/login", {
+      mode: "cors", //IMPORTANTE: Habilitamos o CORS para manter Back e Front em dominios separados
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,8 +42,9 @@ export default function Login() {
       body: JSON.stringify({ email, password }),
     })
       .then((response) => {
+        //Valida resposta da API. Se for OK, adiciona o Usuario ao State
+        //Senão Mostra alerta com mensagem de erro
         if (response.ok) {
-          console.log("Sucesso", JSON.stringify(response.body), response);
           loggedUser(JSON.stringify(response.body));
         } else {
           console.log("nok", response);
@@ -50,6 +58,7 @@ export default function Login() {
       });
   };
 
+  //Renderiza HTML da página de Login
   return (
     <div className="div-login">
       <Alert

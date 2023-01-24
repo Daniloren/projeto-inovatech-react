@@ -23,8 +23,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env-cmd -f ./.env react-scripts start",
     "build": "react-scripts build",
+    "build:prod": "env-cmd -f .env.production npm run build",
+    "deploy": "aws s3 sync ./build/ s3://www.inovatech.com.br/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -45,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }

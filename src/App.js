@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Inscricao from "./components/pages/Inscricao";
-import Python from "./components/pages/cursos/Python";
 import Curso from "./components/pages/Curso";
 
 import "bootstrap/dist/css/bootstrap.min.css";

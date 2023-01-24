@@ -10,9 +10,11 @@ import { useLocation } from "react-router-dom";
 }
 
 export default function AppHeader() {
-  const [pesquisa, setPesquisa] = React.useState("");
-
   const location = useLocation();
+
+  const [pesquisa, setPesquisa] = React.useState(
+    !location.state || !location.state.pesquisa ? "" : location.state.pesquisa
+  );
   const [user, setUser] = React.useState(location.state);
   const navigate = useNavigate();
 
@@ -23,18 +25,14 @@ export default function AppHeader() {
     setUser(null);
   };
 
+  //Manipula evento no formulario de pesquisa
   const handleFormSubmit = (event) => {
+    //Interrompe comportamento padrão do form HTML
     event.preventDefault();
 
-    const url = "/curso/" + pesquisa;
-    let params = {
-      state: {
-        curso: {
-          cursoId: pesquisa,
-        },
-      },
-    };
-    navigate(url, params);
+    //redireciona para página do curso solicitado. Ex.: curso/HTML
+    navigate("/curso/" + pesquisa);
+    //window.location = url;
   };
 
   return (

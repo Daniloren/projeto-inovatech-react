@@ -17,30 +17,33 @@ class Curso extends Component {
     },
   };
 
-  handleCursoChange = (cursoId) => {
-    this.setState = {
-      curso: {
-        cursoId: cursoId,
-      },
-    };
-  };
-
+  //Metodo iniciado quando o React carrega a tela
   componentDidMount() {
+    //Usa as Props pra pegar o curso que está na url (curso/python, por exemplo)
     const idAtual = this.props.params.cursosId;
 
-    this._asyncRequest = fetch("/cursos/", {
+    //URL do Backend pra encontrar os cursos
+    const url = process.env.REACT_APP_API_URL + "/cursos/";
+
+    //Faz a chamada para buscar os cursos
+    this._asyncRequest = fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     })
+      //Converte o retorno da API em JSON
       .then((response) => response.json())
+      //Usa o json retornado para filtrar o curso necessário
       .then((response) => {
         const cursos = response.cursos.Items;
         const curso = cursos.filter((c) => {
+          //Compara o curso na barra de endereço com o cursoId que está armazenado no BD.
+          //Se forem iguais adiciona na variavel "curso"
           if (c.cursosId.toLowerCase() === idAtual.toLowerCase()) return c;
         });
 
+        //Se tiver apenas um curso com o nome pesquisado, atualiza o State e recarrega a tela com os dados do novo curso
         if (curso.length == 1) this.setState({ curso: curso[0] });
       })
       .catch((e) => {
@@ -52,6 +55,9 @@ class Curso extends Component {
     const { curso } = this.state;
 
     let linhas = [];
+
+    //Se o curso foi encontrado e existe "conteudo detalhado"
+    // Renderiza os valores no formato padrão
     if (
       curso &&
       curso.conteudoDetalhado &&
@@ -73,6 +79,7 @@ class Curso extends Component {
       }
     }
 
+    //Se o curso não foi encontrado, mostra a informação "Nenhum curso encontrado"
     if (!curso.cursosId) {
       return (
         <div>
@@ -84,6 +91,7 @@ class Curso extends Component {
         </div>
       );
     } else {
+      //Se existe um curso, atualiza a tela com as informações preenchidas
       return (
         <div>
           <AppHeader />
@@ -191,4 +199,5 @@ class Curso extends Component {
   }
 }
 
+//Withrouter utilizado para receber parametros de outras telas
 export default withRouter(Curso);
