@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Carousel,
   CarouselItem,
@@ -29,7 +30,7 @@ var items = [
     altText: " C# é uma linguagem de programação, multiparadigma",
     caption: " C# é uma linguagem de programação, multiparadigma",
     align: "right",
-    link: "/curso/c-sharp",
+    link: "/curso/cs",
   },
 ];
 
@@ -85,8 +86,6 @@ class Carrousel extends Component {
   render() {
     const { activeIndex, items } = this.state;
 
-    console.log(items);
-
     const slides = items.map((item) => {
       return (
         <CarouselItem
@@ -94,7 +93,9 @@ class Carrousel extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <img src={item.src} alt={item.altText} />
+          <Link to={item.link}>
+            <img src={item.src} alt={item.altText} />
+          </Link>
           <CarouselCaption
             className={"text-" + item.align}
             captionText={""}

@@ -82,7 +82,9 @@ export default function Login() {
               className="form-control"
               placeholder="name@example.com"
             />
-            <label htmlFor="floatingInput">Email</label>
+            <label htmlFor="floatingInput" className="form-label">
+              Email
+            </label>
           </div>
           <div className="form-floating">
             <input
@@ -94,7 +96,9 @@ export default function Login() {
               className="form-control"
               placeholder="Password"
             />
-            <label htmlFor="floatingPassword">Senha</label>
+            <label htmlFor="floatingPassword" className="form-label">
+              Senha
+            </label>
           </div>
 
           <div className="checkbox mb-3">

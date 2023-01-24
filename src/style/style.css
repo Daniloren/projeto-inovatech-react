@@ -105,7 +105,7 @@ width: 20px;
 .carousel-item {
   height: 32rem;
 }
-.carousel-item > img {
+.carousel-item > a > img {
   position: absolute;
   margin-top: -11rem;
   top: 0;
@@ -169,6 +169,9 @@ Login
 
 .form-signin .form-floating:focus-within {
   z-index: 2;
+}
+.form-label{
+  color: #000;
 }
 
 .mb-4 {
@@ -274,7 +277,7 @@ Login
 .carousel-item {
   height: 20rem;
 }
-.carousel-item > img {
+.carousel-item > a > img {
   position: absolute;
   margin-top: 0px;
   top: 0;

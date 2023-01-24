@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import logo from "../../image/LogoNovo.png";
 
 import perfil from "../../image/perfil.png";
@@ -10,14 +10,31 @@ import { useLocation } from "react-router-dom";
 }
 
 export default function AppHeader() {
+  const [pesquisa, setPesquisa] = React.useState("");
+
   const location = useLocation();
   const [user, setUser] = React.useState(location.state);
+  const navigate = useNavigate();
 
   const [userLogged, setUserLogged] = React.useState(user ? true : false);
 
   const logoff = () => {
     setUserLogged(false);
     setUser(null);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    const url = "/curso/" + pesquisa;
+    let params = {
+      state: {
+        curso: {
+          cursoId: pesquisa,
+        },
+      },
+    };
+    navigate(url, params);
   };
 
   return (
@@ -74,9 +91,14 @@ export default function AppHeader() {
             <form
               className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
               role="search"
+              onSubmit={handleFormSubmit}
             >
               <input
                 type="search"
+                onChange={(event) => setPesquisa(event.target.value)}
+                id="pesquisa"
+                name="pesquisa"
+                value={pesquisa}
                 className="form-control form-control-dark text-bg-dark"
                 placeholder="Buscar..."
                 aria-label="Search"
