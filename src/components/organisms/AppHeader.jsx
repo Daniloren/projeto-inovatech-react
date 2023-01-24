@@ -27,12 +27,12 @@ export default function AppHeader() {
 
   //Manipula evento no formulario de pesquisa
   const handleFormSubmit = (event) => {
-    //Interrompe comportamento padrão do form HTML
-    event.preventDefault();
-
     //redireciona para página do curso solicitado. Ex.: curso/HTML
     navigate("/curso/" + pesquisa);
     //window.location = url;
+
+    //Interrompe comportamento padrão do form HTML
+    event.preventDefault();
   };
 
   return (

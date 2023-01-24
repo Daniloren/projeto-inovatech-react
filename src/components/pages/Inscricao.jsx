@@ -51,7 +51,8 @@ export default function Inscricao() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    fetch("/users", {
+    fetch(process.env.REACT_APP_API_URL + "/users", {
+      mode: "cors",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
