@@ -5,34 +5,37 @@ import logo from "../../image/LogoNovo.png";
 
 import perfil from "../../image/perfil.png";
 import { useLocation } from "react-router-dom";
+
 {
   /* eslint jsx-a11y/anchor-is-valid : 0 */
 }
 
 export default function AppHeader() {
   const location = useLocation();
+  const user = localStorage.getItem("user");
+  const [userLogged, setUserLogged] = React.useState(user ? true : false);
 
   const [pesquisa, setPesquisa] = React.useState(
     !location.state || !location.state.pesquisa ? "" : location.state.pesquisa
   );
-  const [user, setUser] = React.useState(location.state);
   const navigate = useNavigate();
-
-  const [userLogged, setUserLogged] = React.useState(user ? true : false);
-
-  const logoff = () => {
-    setUserLogged(false);
-    setUser(null);
-  };
 
   //Manipula evento no formulario de pesquisa
   const handleFormSubmit = (event) => {
+    //Interrompe comportamento padrão do form HTML
+    event.preventDefault();
+
     //redireciona para página do curso solicitado. Ex.: curso/HTML
     navigate("/curso/" + pesquisa);
     //window.location = url;
+  };
 
-    //Interrompe comportamento padrão do form HTML
-    event.preventDefault();
+  const logoff = () => {
+    console.log("1");
+    localStorage.removeItem("user");
+    console.log("user: ", user);
+    setUserLogged(false);
+    navigate("/");
   };
 
   return (
@@ -62,15 +65,6 @@ export default function AppHeader() {
                   className="nav-link px-2 text-white"
                 >
                   Inicio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/curso"
-                  state={location.state}
-                  className="nav-link px-2 text-white"
-                >
-                  Cursos
                 </Link>
               </li>
 
@@ -113,9 +107,9 @@ export default function AppHeader() {
             </div>
 
             <div className={userLogged ? "text-end" : "hidden"}>
-              <a href="">
+              <Link to="/perfil">
                 <img src={perfil} className="perfil m-3" alt="" />
-              </a>
+              </Link>
               <a href="#" onClick={() => logoff()}>
                 desconectar
               </a>

@@ -7,7 +7,7 @@ import logo from "../../image/LogoNovo.png";
 
 export default function Login() {
   const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [senha, setSenha] = React.useState("");
   const [visible, setVisible] = React.useState(false);
 
   const onDismiss = () => setVisible(false);
@@ -15,14 +15,11 @@ export default function Login() {
 
   //Adiciona o usuário logado ao State do React
   const loggedUser = (user) => {
-    navigate("/", {
-      state: {
-        id: user.userId,
-        img: "",
-        name: user.name,
-        email: user.email,
-      },
-    });
+    user.senha = "";
+    console.log("usuario logado:", user);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    navigate("/");
   };
 
   //faz o processo de login
@@ -39,20 +36,24 @@ export default function Login() {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, senha }),
     })
       .then((response) => {
         //Valida resposta da API. Se for OK, adiciona o Usuario ao State
         //Senão Mostra alerta com mensagem de erro
         if (response.ok) {
-          loggedUser(JSON.stringify(response.body));
+          return response.json();
+          //loggedUser(response.json());
         } else {
           console.log("nok", response);
           setVisible(true);
+          throw response.statusText;
         }
-
-        return response;
       })
+      .then((response) => {
+        loggedUser(response);
+      })
+
       .catch((err) => {
         console.log(err);
       });
@@ -97,15 +98,15 @@ export default function Login() {
           </div>
           <div className="form-floating">
             <input
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={(event) => setSenha(event.target.value)}
               type="password"
-              id="password"
-              name="password"
-              value={password}
+              id="senha"
+              name="senha"
+              value={senha}
               className="form-control"
-              placeholder="Password"
+              placeholder="Senha"
             />
-            <label htmlFor="floatingPassword" className="form-label">
+            <label htmlFor="floatingSenha" className="form-label">
               Senha
             </label>
           </div>

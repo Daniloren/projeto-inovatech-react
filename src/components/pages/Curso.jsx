@@ -11,7 +11,6 @@ import withRouter from "./withRouter";
 
 class Curso extends Component {
   state = {
-    externalData: null,
     curso: {
       cursoId: null,
     },
@@ -95,7 +94,6 @@ class Curso extends Component {
       return (
         <div>
           <AppHeader />
-
           <main>
             <h1>{curso.cursosId}</h1>
             <section>

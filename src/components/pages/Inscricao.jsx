@@ -3,8 +3,8 @@ import React from "react";
 //import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "reactstrap";
-import AppHeader from "../organisms/AppHeader";
 import AppFooter from "../organisms/AppFooter";
+import AppHeader from "../organisms/AppHeader";
 
 export default function Inscricao() {
   //Atributos do cadastro do usuário
@@ -33,7 +33,7 @@ export default function Inscricao() {
       state: {
         id: user.id,
         img: "",
-        name: user.name,
+        nome: user.nome,
         email: user.email,
       },
     });
@@ -59,9 +59,9 @@ export default function Inscricao() {
       },
 
       body: JSON.stringify({
-        name: nome,
+        nome,
         email,
-        password: senha,
+        senha,
         sobrenome,
         endereco,
         numero,

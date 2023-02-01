@@ -28,10 +28,10 @@ export default function Home() {
             />
             <title>Placeholder</title>
 
-            <h2 className="gitHub">Git Hub</h2>
+            <h2 className="gitHub">GitHub</h2>
             <p className="gitHubText">
               Aprenda como instalar
-              <br />o git hub no seu computador
+              <br />o github no seu computador
             </p>
             <p>
               <a className="saibaMais btn btn-primary" href="#">
